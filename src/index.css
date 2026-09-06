@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --bg: #020609;
+  --panel: #050c15;
+  --panel-2: #081120;
+  --border: #0c1c2e;
+  --border-strong: #152840;
+  --fg: #b8d4ec;
+  --muted: #3d5a72;
+  --grid: #0a1828;
+  --route: #00cfff;
+  --origin: #39ff8a;
+  --pending: #0d1f32;
+  --next: #ffad1f;
+  --truck: #e0f0ff;
+  --done: #39ff8a;
+  --terrain-water: #010a14;
+  --terrain-urban: #040b18;
+  --terrain-industrial: #060a0e;
+  --terrain-summit: #050810;
+}
+
+.theme-light {
+  --bg: #e4ecf5;
+  --panel: #ffffff;
+  --panel-2: #f0f6fc;
+  --border: #d0dcea;
+  --border-strong: #b8ccdf;
+  --fg: #0a1a2c;
+  --muted: #4a6880;
+  --grid: #dce8f4;
+  --route: #0077cc;
+  --origin: #00a850;
+  --pending: #c8d8e8;
+  --next: #d47800;
+  --truck: #0a1a2c;
+  --done: #00a850;
+  --terrain-water: #d0e8f8;
+  --terrain-urban: #e8f0f8;
+  --terrain-industrial: #e4eaf0;
+  --terrain-summit: #dce8f0;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+::selection {
+  background: var(--route);
+  color: #020609;
+}
+
+/* scrollbars hidden by default */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* scanline texture overlay */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.08) 3px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes routeflow {
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes blip {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes radar-expand {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(4.5); opacity: 0; }
+}
+
+.radar-ring-1 {
+  animation: radar-expand 2.2s ease-out infinite;
+}
+.radar-ring-2 {
+  animation: radar-expand 2.2s ease-out infinite 0.9s;
+}
+
+@keyframes progress-scan {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ── Trail glow ──────────────────────────────────────────────────────────── */
+.trail-glow {
+  filter: drop-shadow(0 0 6px #00cfff) drop-shadow(0 0 12px rgba(0,207,255,0.4));
+}
+
+/* ── Leaflet overrides ───────────────────────────────────────────────────── */
+.leaflet-container {
+  background: var(--bg) !important;
+  font-family: 'JetBrains Mono', monospace;
+}
+.leaflet-control-attribution {
+  background: color-mix(in srgb, var(--panel) 85%, transparent) !important;
+  color: var(--muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 9px !important;
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--border-strong) !important;
+  border-left: 1px solid var(--border-strong) !important;
+  padding: 3px 6px !important;
+  backdrop-filter: blur(4px);
+}
+.leaflet-control-attribution a {
+  color: var(--muted) !important;
+}
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  border: none !important;
+  background: transparent !important;
+}
+
+@keyframes arrived-glow {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px) }
+  to   { opacity: 1; transform: translateX(0) }
+}
