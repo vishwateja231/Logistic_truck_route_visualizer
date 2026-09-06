@@ -6,7 +6,7 @@ The app supports both single-route playback and multi-vehicle fleet mode, plus a
 
 ## Demo
 
-- Watch the demo video: [Screen Recording 2026-09-06 201622.mp4](./Screen%20Recording%202026-09-06%20201622.mp4)
+- Watch the demo video: https://drive.google.com/file/d/1KC-PBTssqaaPqYrzN7Q9qVhlBOYt7iWf/view?usp=sharing
 
 ## What This Project Does
 
