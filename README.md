@@ -4,6 +4,10 @@ Fleet Ops is a React + TypeScript route simulation dashboard for logistics opera
 
 The app supports both single-route playback and multi-vehicle fleet mode, plus a custom route builder powered by map click waypoints.
 
+## Demo
+
+- Watch the demo video: [Screen Recording 2026-09-06 201622.mp4](./Screen%20Recording%202026-09-06%20201622.mp4)
+
 ## What This Project Does
 
 - Simulates truck movement across preconfigured delivery routes
